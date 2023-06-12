@@ -1,24 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Todolist from "./components/todos/TodoList";
 
 function App() {
+
+  let tasks = [
+    { id: 1, title: "Тестовое задание", isDone: false },
+    { id: 2, title: "Прекрасный код", isDone: false },
+    { id: 3, title: "Покрытие тестами", isDone: true },
+  ];
+
+  const removeTask = (id: number) => {
+    tasks = tasks.filter((task) => task.id !== id);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>todos</h1>
+      <Todolist title="What needs to be done" tasks={tasks} removeTask={removeTask}/>
     </div>
   );
 }
